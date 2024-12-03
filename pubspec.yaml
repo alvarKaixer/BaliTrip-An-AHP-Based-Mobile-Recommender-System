@@ -1,0 +1,48 @@
+name: music_recommender
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  http: ^1.2.2
+  chips_choice: ^3.0.0
+  url_launcher:
+  table_calendar: ^3.0.6  # Add this line to include the calendar widget
+  shared_preferences: ^2.0.9
+  intl: ^0.18.0
+  dio: ^5.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+
+  assets:
+    - assets/hardrock.jpg
+    - assets/mang_inasal.jpg
+    - assets/noodlenook.jpg
+    - assets/stritaparishchurch.jpg
+    - assets/theedge.jpg
+    - assets/thespot.jpg
+    - assets/logo2.png
+    - assets/balingasagpark.jpg
+    - assets/bebedeck.jpg
+    - assets/emmanuelspring.jpg
+    - assets/escanilla.jpg
+    - assets/ipvillage.jpg
+    - assets/islaverde.jpg
+    - assets/joannasnook.jpg
+    - assets/larocka.jpg
+    - assets/linabumountainview.jpg

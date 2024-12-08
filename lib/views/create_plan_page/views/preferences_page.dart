@@ -7,14 +7,32 @@ class PreferencesPage extends StatefulWidget {
   const PreferencesPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  // ignore: library_private_types_in_public_api
   _PreferencesPageState createState() => _PreferencesPageState();
 }
 
 class _PreferencesPageState extends State<PreferencesPage> {
   final TextEditingController _budgetController = TextEditingController();
   String? _selectedOption = 'tourist'; // Default selected option
+
+  void _handleNext() {
+    if (_budgetController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter your budget.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Proceed to AHP Questions Screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AHPQuestionsScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,44 +81,6 @@ class _PreferencesPageState extends State<PreferencesPage> {
             ),
             const SizedBox(height: 20),
 
-            // AHP Question Box
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AHPQuestionsScreen(),
-                  ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color:
-                      const Color.fromRGBO(46, 79, 79, 1), // Green background
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Preferences', // Text inside the green button
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold, // Make the text bold
-                        color: Colors.white, // Change text color to white
-                      ),
-                    ),
-                    Icon(Icons.arrow_forward,
-                        color: Color.fromARGB(255, 255, 255, 255)),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
             // Radio buttons for Local Tourist Attraction or Local Dining
             const Text('Please choose one:'),
             const SizedBox(height: 10),
@@ -116,7 +96,6 @@ class _PreferencesPageState extends State<PreferencesPage> {
               activeColor: const Color.fromRGBO(
                   46, 79, 79, 1), // Green color for the radio button circle
             ),
-
             RadioListTile<String>(
               title: const Text('Local Dining'),
               value: 'dining',
@@ -129,8 +108,8 @@ class _PreferencesPageState extends State<PreferencesPage> {
               activeColor: const Color.fromRGBO(
                   46, 79, 79, 1), // Green color for the radio button circle
             ),
-
-            const Spacer(),
+            const SizedBox(
+                height: 20), // Adjusted space between radio options and buttons
 
             // Back and Next Buttons
             Row(
@@ -165,9 +144,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {
-                    // Handle Next action
-                  },
+                  onPressed: _handleNext,
                   child: const Text(
                     'NEXT',
                     style: TextStyle(color: Colors.white),

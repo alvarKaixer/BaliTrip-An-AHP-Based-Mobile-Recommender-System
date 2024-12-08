@@ -76,7 +76,7 @@ class IpVillagePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     const Text(
-                      'IP Village, Misamis Oriental',
+                      'Samay, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,

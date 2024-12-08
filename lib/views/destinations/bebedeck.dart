@@ -75,7 +75,7 @@ class BebedeckPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     const Text(
-                      'Bebedeck, Misamis Oriental',
+                      'Balaganan, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
@@ -94,33 +94,98 @@ class BebedeckPage extends StatelessWidget {
                     const SizedBox(height: 16),
 
                     // Activities List with Fees
-                    ListView.builder(
+                    ListView(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.check_circle_outline,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'River Tour',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                              '₱150.00',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      children: const [
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.check_circle_outline,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                            'Adult',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          trailing: Text(
+                            '₱50.00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        );
-                      },
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.check_circle_outline,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                            'Kids',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          trailing: Text(
+                            '₱35.00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.kitchen,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                            'Outdoor Cooking & Grilling Area',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.egg,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                            'Egg Swing',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.pool,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                            'Outdoor Pool',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.home,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                            'Villa\'s Rates',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          trailing: Text(
+                            '₱500 - ₱1300',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

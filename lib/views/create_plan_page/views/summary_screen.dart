@@ -3,7 +3,7 @@ import 'package:music_recommender/views/create_plan_page/views/recommendation_pa
 import 'package:music_recommender/views/create_plan_page/views/models/recommendation.dart';
 
 class SummaryScreen extends StatelessWidget {
-  final List<Recommendation> recommendations; 
+  final List<Recommendation> recommendations;
   final List<Map<String, dynamic>> responses;
 
   const SummaryScreen({
@@ -50,7 +50,8 @@ class SummaryScreen extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(46, 79, 79, 1),
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -63,8 +64,10 @@ class SummaryScreen extends StatelessWidget {
                       builder: (context) => RecommendationPage(
                         recommendations: recommendations,
                         responses: responses,
-                        remainingBudget: 500, // Make sure to replace this with actual value
-                        preferredArea: '', recommendation: null, // Make sure to replace with actual data if needed
+                        remainingBudget: 500,
+                        recommendation:
+                            null, // Make sure to replace this with actual value
+                        // Make sure to replace with actual data if needed
                       ),
                     ),
                   );

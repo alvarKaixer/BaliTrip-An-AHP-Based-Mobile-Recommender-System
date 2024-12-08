@@ -66,90 +66,110 @@ class IslaVerdePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'Isla Verde',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
-                      'A Beautiful Beach Destination',
+                    SizedBox(height: 4),
+                    Text(
+                      'A Relaxing Escape by the Sea',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    const Divider(thickness: 1, color: Colors.grey),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Activities & Itineraries',
+                    SizedBox(height: 16),
+                    Divider(thickness: 1, color: Colors.grey),
+                    SizedBox(height: 16),
+                    Text(
+                      'Activities & Facilities',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
-                    // Activities List with Fees
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.check_circle_outline,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'Snorkeling Tour',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                              '₱300.00',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+                    // Activities
+                    ListTile(
+                      leading: Icon(Icons.self_improvement,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Unwind'),
                     ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.check_circle_outline,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'Beach Volleyball',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                              '₱150.00',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+                    ListTile(
+                      leading: Icon(Icons.spa,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Relax'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.pool,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Swimming'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.sports_esports,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Playing'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.people,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Bonding'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.sports_esports,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Fishing'),
+                    ),
+
+                    SizedBox(height: 16),
+
+                    // Entrance Fee
+                    Text(
+                      'Entrance Fee',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ListTile(
+                      leading: Icon(Icons.local_offer,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Per Person'),
+                      trailing: Text(
+                        '₱10.00',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 16),
+
+                    // Cottages
+                    Text(
+                      'Cottages',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ListTile(
+                      leading: Icon(Icons.cottage,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Standard Cottage'),
+                      trailing: Text(
+                        '₱150.00',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ],
                 ),

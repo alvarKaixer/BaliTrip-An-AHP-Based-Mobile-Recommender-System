@@ -24,10 +24,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.10.0 # Add this line to include the launcher icon package
 
 flutter:
   uses-material-design: true
-
 
   assets:
     - assets/hardrock.jpg
@@ -46,3 +46,8 @@ flutter:
     - assets/joannasnook.jpg
     - assets/larocka.jpg
     - assets/linabumountainview.jpg
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo2.png"  # Path to the icon image

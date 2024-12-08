@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:music_recommender/views/create_plan_page/views/models/recommendation.dart';
 // ignore: unused_import
 import 'recommendation_page.dart'; // Import your RecommendationPage
@@ -9,28 +11,36 @@ class AHPQuestionPage extends StatefulWidget {
   final String criterion2;
   final VoidCallback onNext;
   final Function(List<Recommendation>) onFinished;
-  
+
   const AHPQuestionPage({
     Key? key,
     required this.questionIndex,
     required this.criterion1,
     required this.criterion2,
     required this.onNext,
-    required this.onFinished, required Null Function(dynamic selectedCriterion, dynamic importance) onSave,
+    required this.onFinished,
+    required Null Function(dynamic selectedCriterion, dynamic importance)
+        onSave,
   }) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _AHPQuestionPageState createState() => _AHPQuestionPageState();
 }
 
 class _AHPQuestionPageState extends State<AHPQuestionPage> {
   String? _selectedCriterion;
-  int _selectedImportance = 5; // Default importance level
+  int _selectedImportance = 1; // Default importance level
 
   // Function to handle the "Next" button press
   void _handleNext() {
     if (_selectedCriterion != null) {
+      // Call the API to save the current data
+      saveAHPData(
+        widget.criterion1,
+        widget.criterion2,
+        _selectedImportance,
+      );
+
       // If it's the last question (question 4 or beyond)
       if (widget.questionIndex >= 4) {
         // Create recommendations based on user input (these should come from actual logic based on user preferences)
@@ -192,6 +202,32 @@ class _AHPQuestionPageState extends State<AHPQuestionPage> {
   }
 }
 
+Future<void> saveAHPData(
+    String criterion1, String criterion2, int importance) async {
+  final url = Uri.parse(
+      'https://balitripapi.onrender.com/ahp/rate-multiple'); // Replace with your actual API URL
+
+  try {
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'criterion1': criterion1,
+        'criterion2': criterion2,
+        'importance': importance,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      print('Data saved successfully');
+    } else {
+      print('Failed to save data');
+    }
+  } catch (error) {
+    print('Error: $error');
+  }
+}
+
 class RecommendationPage extends StatelessWidget {
   final List<Recommendation> recommendations;
   final double remainingBudget;
@@ -223,7 +259,8 @@ class RecommendationPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: ListTile(
               title: Text(rec.name),
-              subtitle: Text('${rec.location} - Entrance Fee: \$${rec.entranceFee}'),
+              subtitle:
+                  Text('${rec.location} - Entrance Fee: \$${rec.entranceFee}'),
               trailing: ElevatedButton(
                 onPressed: () {
                   Navigator.push(

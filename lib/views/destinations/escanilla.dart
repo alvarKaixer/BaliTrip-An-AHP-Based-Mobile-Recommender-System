@@ -65,62 +65,173 @@ class EscanillaPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'Escanilla',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
-                      'Escanilla, Misamis Oriental',
+                    SizedBox(height: 4),
+                    Text(
+                      'Cala-Cala, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    const Divider(thickness: 1, color: Colors.grey),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Activities & Itineraries',
+                    SizedBox(height: 16),
+                    Divider(thickness: 1, color: Colors.grey),
+                    SizedBox(height: 16),
+                    Text(
+                      'Facilities & Pricing',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
-                    // Activities List with Fees
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.check_circle_outline,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'Scenic Viewpoint',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                              '₱100.00',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+                    // Rooms
+                    ListTile(
+                      leading: Icon(Icons.hotel,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text(
+                          'Fully Airconditioned (15 pax, 4 rooms available)'),
+                      trailing: Text('₱6,000'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.hotel,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Airconditioned (9 pax, 1 room available)'),
+                      trailing: Text('₱4,500'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.hotel,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Airconditioned (6 pax, 2 rooms available)'),
+                      trailing: Text('₱3,500'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.hotel,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title:
+                          Text('Airconditioned (2-3 pax, 3 rooms available)'),
+                      trailing: Text('₱2,500'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.hotel,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Non-Airconditioned Beach Room (6 pax)'),
+                      trailing: Text('₱1,500'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.hotel,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Non-Airconditioned Beach Room (4 pax)'),
+                      trailing: Text('₱1,000'),
+                    ),
+
+                    // Function Halls
+                    Divider(),
+                    ListTile(
+                      leading: Icon(Icons.meeting_room,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text(
+                          'Function Hall (50-80 pax, Fully Airconditioned)'),
+                      trailing: Text('₱10,000'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.meeting_room,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Open Function Hall (50-80 pax)'),
+                      trailing: Text('₱5,000'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.meeting_room,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text(
+                          'Beachside Function Hall (50-80 pax, Non-Aircon)'),
+                      trailing: Text('₱5,000'),
+                    ),
+
+                    // Pool & Beach Entrance
+                    Divider(),
+                    ListTile(
+                      leading: Icon(Icons.pool,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Pool Entrance (Adult - Day Use)'),
+                      trailing: Text('₱50'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.pool,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Pool Entrance (Adult - Overnight)'),
+                      trailing: Text('₱100'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.pool,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Pool Entrance (Kids - Day Use)'),
+                      trailing: Text('₱30'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.pool,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Pool Entrance (Kids - Overnight)'),
+                      trailing: Text('₱60'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.beach_access,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Beach Entrance (Adult - Day Use)'),
+                      trailing: Text('₱20'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.beach_access,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Beach Entrance (Adult - Overnight)'),
+                      trailing: Text('₱40'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.beach_access,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Beach Entrance (Kids - Day Use)'),
+                      trailing: Text('₱15'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.beach_access,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Beach Entrance (Kids - Overnight)'),
+                      trailing: Text('₱30'),
+                    ),
+
+                    // Cottages
+                    Divider(),
+                    ListTile(
+                      leading: Icon(Icons.cottage,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Big Cottage (20-25 pax, Day Use)'),
+                      trailing: Text('₱1,000'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.cottage,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Big Cottage (20-25 pax, Overnight)'),
+                      trailing: Text('₱1,500'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.cottage,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Medium Cottage (10-15 pax, Day Use)'),
+                      trailing: Text('₱600'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.cottage,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Medium Cottage (10-15 pax, Overnight)'),
+                      trailing: Text('₱1,000'),
                     ),
                   ],
                 ),

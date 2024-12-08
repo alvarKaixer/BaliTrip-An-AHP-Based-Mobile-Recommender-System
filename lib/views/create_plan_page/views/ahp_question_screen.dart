@@ -1,32 +1,58 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class AHPQuestionPage extends StatefulWidget {
   final int questionIndex;
-  final String criterion1;
-  final String criterion2;
+  final List<Map<String, String>>
+      criteriaPairs; // List of multiple criterion pairs for the current question
   final VoidCallback onNext;
+  final Function(String, String, int) onSave;
 
   const AHPQuestionPage({
     Key? key,
     required this.questionIndex,
-    required this.criterion1,
-    required this.criterion2,
+    required this.criteriaPairs,
     required this.onNext,
+    required this.onSave,
   }) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _AHPQuestionPageState createState() => _AHPQuestionPageState();
 }
 
 class _AHPQuestionPageState extends State<AHPQuestionPage> {
-  int _selectedImportance = 5; // Default importance level
+  int _selectedImportance = 1; // Default importance level
+  int _currentPairIndex = 0; // Track which pair of criteria we are showing
+
+  void _saveAndNext() {
+    // Save the current importance value for the current pair of criteria
+    widget.onSave(
+      widget.criteriaPairs[_currentPairIndex]['criterion1']!,
+      widget.criteriaPairs[_currentPairIndex]['criterion2']!,
+      _selectedImportance,
+    );
+
+    // Move to the next pair or finish if we've reached the last pair
+    if (_currentPairIndex < widget.criteriaPairs.length - 1) {
+      setState(() {
+        _currentPairIndex++;
+        _selectedImportance = 5; // Reset the slider for the next pair
+      });
+    } else {
+      // All pairs are done, move to the next screen
+      widget.onNext();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final pair = widget.criteriaPairs[_currentPairIndex];
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('AHP Question ${widget.questionIndex}/4'),
+        title: Text(
+            'AHP Question ${widget.questionIndex}/12'), // Update here to reflect 12 questions
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -45,14 +71,14 @@ class _AHPQuestionPageState extends State<AHPQuestionPage> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(widget.criterion1),
+                    child: Text(pair['criterion1']!),
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(widget.criterion2),
+                    child: Text(pair['criterion2']!),
                   ),
                 ),
               ],
@@ -77,7 +103,7 @@ class _AHPQuestionPageState extends State<AHPQuestionPage> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: widget.onNext,
+              onPressed: _saveAndNext,
               child: const Text('Next'),
             ),
           ],

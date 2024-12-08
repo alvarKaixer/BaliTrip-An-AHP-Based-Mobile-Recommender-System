@@ -66,100 +66,70 @@ class TheSpotPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'The Spot - Dining & Tourist Attraction',
+                  children: const [
+                    Text(
+                      'The Spot - Fun for All Ages',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
+                    SizedBox(height: 4),
+                    Text(
                       'Dumarait, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    const Divider(thickness: 1, color: Colors.grey),
-                    const SizedBox(height: 16),
-                    const Text(
+                    SizedBox(height: 16),
+                    Divider(thickness: 1, color: Colors.grey),
+                    SizedBox(height: 16),
+
+                    // Attractions & Activities
+                    Text(
                       'Attractions & Activities',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
-                    // Tourist Attractions List
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount:
-                          4, // Adjust the number of attractions as needed
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.place,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'Scenic Viewpoint',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            subtitle: Text(
-                              'Explore the beautiful views of the mountains.',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.grey),
-                            ),
-                          ),
-                        );
-                      },
+                    ListTile(
+                      leading: Icon(Icons.restaurant,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Dine-In Restaurant'),
                     ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Menu & Prices',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    ListTile(
+                      leading: Icon(Icons.celebration,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Dinosaur Themed Park'),
                     ),
-                    const SizedBox(height: 16),
-
-                    // Menu Items with Prices
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4, // Adjust the number of menu items as needed
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.food_bank,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'Grilled Fish Plate',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                              '₱250.00',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+                    ListTile(
+                      leading: Icon(Icons.sports_volleyball,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Trampoline'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.slideshow,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Slides'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.chair_alt,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Swings'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.remove,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Seesaw'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.celebration,
+                          color: Color.fromRGBO(72, 111, 111, 1)),
+                      title: Text('Venues'),
                     ),
                   ],
                 ),

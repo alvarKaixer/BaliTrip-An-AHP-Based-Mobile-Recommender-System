@@ -5,13 +5,13 @@ import 'widgets/recommendation_list.dart';
 class RecommendationPage extends StatelessWidget {
   final List<Recommendation> recommendations;
   final double remainingBudget;
-  final String preferredArea;
 
   const RecommendationPage({
     Key? key,
     required this.recommendations,
     required this.remainingBudget,
-    required this.preferredArea, required List<Map<String, dynamic>> responses, required recommendation,
+    required List<Map<String, dynamic>> responses,
+    required recommendation,
   }) : super(key: key);
 
   @override
@@ -29,37 +29,44 @@ class RecommendationPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Budget and Preferred Area Information
-              _buildInfoText('Your Remaining Budget:', '₱${remainingBudget.toStringAsFixed(2)}'),
-              const SizedBox(height: 8),
-              _buildInfoText('Preferred Area:', preferredArea),
-              const Divider(thickness: 1, color: Colors.grey),
+              _buildInfoText('Your Remaining Budget:',
+                  '₱${remainingBudget.toStringAsFixed(2)}'),
               const SizedBox(height: 8),
 
               // Section Title
               _buildSectionTitle('Pick your recommendation:'),
               const SizedBox(height: 16),
 
-              // Display Top Recommendation
-              _buildSectionTitle('Top Recommendation:'),
-              RecommendationList(
-                recommendations: recommendations.take(1).toList(),
-              ),
+              // Display the results once the AHP API is finished calculating
+              if (recommendations.isNotEmpty) ...[
+                // Display Top Recommendation
+                _buildSectionTitle('Top Recommendation:'),
+                RecommendationList(
+                  recommendations: recommendations.take(1).toList(),
+                ),
+                const SizedBox(height: 16),
 
-              const SizedBox(height: 16),
-
-              // Display More Recommendations
-              _buildSectionTitle('More Recommendations:'),
-              RecommendationList(
-                recommendations: recommendations.skip(1).toList(),
-              ),
+                // Display More Recommendations
+                _buildSectionTitle('More Recommendations:'),
+                RecommendationList(
+                  recommendations: recommendations.skip(1).toList(),
+                ),
+              ] else ...[
+                // Placeholder text if AHP results are not available yet
+                _buildInfoText(
+                    'Calculating your recommendations...', 'Please wait'),
+              ],
 
               // Back and Next buttons at the bottom
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildNavigationButton(context, 'Back', '/preferencePage', const Color.fromRGBO(72, 111, 111, 1)),
-                  _buildNavigationButton(context, 'Next', '/finishPage', const Color.fromRGBO(72, 111, 111, 1), textColor: Colors.black),
+                  _buildNavigationButton(context, 'Back', '/preferencePage',
+                      const Color.fromRGBO(72, 111, 111, 1)),
+                  _buildNavigationButton(context, 'Next', '/finishPage',
+                      const Color.fromRGBO(72, 111, 111, 1),
+                      textColor: Colors.black),
                 ],
               ),
             ],
@@ -94,7 +101,9 @@ class RecommendationPage extends StatelessWidget {
   }
 
   // Helper Method to Build Navigation Button
-  Widget _buildNavigationButton(BuildContext context, String label, String route, Color backgroundColor, {Color textColor = Colors.white}) {
+  Widget _buildNavigationButton(
+      BuildContext context, String label, String route, Color backgroundColor,
+      {Color textColor = Colors.white}) {
     return ElevatedButton(
       onPressed: () {
         // Navigate to the specified route

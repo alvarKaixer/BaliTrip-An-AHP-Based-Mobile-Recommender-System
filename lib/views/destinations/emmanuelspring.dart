@@ -21,7 +21,7 @@ class EmmanuelSpringPage extends StatelessWidget {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
-                            'assets/emmanuel_spring.jpg'), // Corrected image path
+                            'assets/emmanuelspring.jpg'), // Corrected image path
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -75,7 +75,7 @@ class EmmanuelSpringPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     const Text(
-                      'Emmanuel Spring, Misamis Oriental',
+                      'Samay, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
@@ -94,33 +94,148 @@ class EmmanuelSpringPage extends StatelessWidget {
                     const SizedBox(height: 16),
 
                     // Activities List with Fees
-                    ListView.builder(
+                    ListView(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: const ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: Icon(
-                              Icons.check_circle_outline,
-                              color: Color.fromRGBO(72, 111, 111, 1),
-                            ),
-                            title: Text(
-                              'Nature Walk',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                              '₱100.00',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      children: const [
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.child_care,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Kids'),
+                          trailing: Text(
+                            '₱30.00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        );
-                      },
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.person,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Adult'),
+                          trailing: Text(
+                            '₱50.00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.accessible,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Senior/PWD'),
+                          trailing: Text(
+                            '₱40.00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        // Cottages and accommodations
+                        Divider(),
+                        ListTile(
+                          leading: Icon(
+                            Icons.house,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Cottages (with outlet)'),
+                          trailing: Text('₱500.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.house,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Cottages (with outlet)'),
+                          trailing: Text('₱600.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.house,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Cottages (with outlet)'),
+                          trailing: Text('₱800.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.house,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Cottages (with outlet)'),
+                          trailing: Text('₱1000.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.grass,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Mushroom Cottage (no outlet)'),
+                          trailing: Text('₱350.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.cabin,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Kubo (2pax)'),
+                          trailing: Text('₱1000.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.cabin,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Kubo (4pax)'),
+                          trailing: Text('₱2000.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.ac_unit,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                              'Cottage w/ Aircon & Refrigerator (24hrs, 4pax)'),
+                          trailing: Text('₱4000.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.ac_unit,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Cottage w/ Aircon (2pax)'),
+                          trailing: Text('₱1500.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.ac_unit,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text('Cottage w/ Aircon (4pax)'),
+                          trailing: Text('₱2500.00'),
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.people,
+                            color: Color.fromRGBO(72, 111, 111, 1),
+                          ),
+                          title: Text(
+                              'Kubo Barkadahan w/ Aircon & Ceiling Fan (20-34 pax)'),
+                          trailing: Text('₱400 per head'),
+                        ),
+                      ],
                     ),
                   ],
                 ),

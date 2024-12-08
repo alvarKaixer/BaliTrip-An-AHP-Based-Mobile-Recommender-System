@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'dart:developer';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -25,6 +28,8 @@ class RegisterScreenState extends State<RegisterScreen> {
       _errorMessage = '';
     });
 
+    log('START REGISTRATION HERE');
+
     // Simple validation
     if (_passwordController.text != _confirmPasswordController.text) {
       setState(() {
@@ -36,7 +41,7 @@ class RegisterScreenState extends State<RegisterScreen> {
 
     Dio dio = Dio();
     dio.options.baseUrl =
-        'https://travelapp-api-x5j5.onrender.com'; // Update this with your actual API URL
+        'https://balitripapi.onrender.com'; // Update this with your actual API URL
     dio.options.connectTimeout = Duration(milliseconds: 5000);
     dio.options.receiveTimeout = Duration(milliseconds: 5000);
 
@@ -47,7 +52,7 @@ class RegisterScreenState extends State<RegisterScreen> {
         'password': _passwordController.text,
       });
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Registration successful!')),
         );
@@ -60,7 +65,8 @@ class RegisterScreenState extends State<RegisterScreen> {
     } catch (e) {
       debugPrint('Error during registration: $e');
       setState(() {
-        _errorMessage = 'An error occurred. Please try again later.';
+        _errorMessage =
+            'An error occurred. Please try again later. ERROR: ${e.toString()}';
       });
     } finally {
       setState(() {

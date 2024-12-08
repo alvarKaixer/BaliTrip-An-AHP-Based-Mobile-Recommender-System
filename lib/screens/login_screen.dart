@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // Add the shared_preferences import
 import 'package:music_recommender/screens/register_screen.dart';
 import 'package:music_recommender/service/api_service.dart';
 import 'package:music_recommender/views/bali_trip_screen/bali_trip_screen.dart'; // Assuming ApiService is in the service directory
@@ -34,10 +35,18 @@ class LoginScreenState extends State<LoginScreen> {
         'password': _passwordController.text,
       });
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
+        // Assuming the API response contains the token
+        final token = response.data['token']; // Adjust if necessary
+
+        // Save the token using SharedPreferences
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('auth_token', token);
+
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login successful!')),
         );
+
         // Navigate to the BaliTripScreen after successful login
         Navigator.pushReplacement(
           context,
@@ -50,7 +59,8 @@ class LoginScreenState extends State<LoginScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'An error occurred. Please try again later.';
+        _errorMessage =
+            'An error occurred. Please try again later. ERROR: ${e.toString()}';
       });
     } finally {
       setState(() {

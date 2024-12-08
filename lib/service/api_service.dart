@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 
 class ApiService {
@@ -6,11 +8,11 @@ class ApiService {
   // Constructor for ApiService to initialize Dio with the necessary configurations
   ApiService() {
     _dio.options.baseUrl =
-        'https://travelapp-api-x5j5.onrender.com'; // Your API's base URL
+        'https://balitripapi.onrender.com'; // Your API's base URL
     _dio.options.connectTimeout =
-        Duration(milliseconds: 20000); // 20 seconds timeout for connection
+        Duration(milliseconds: 5000); // 20 seconds timeout for connection
     _dio.options.receiveTimeout =
-        Duration(milliseconds: 20000); // 20 seconds timeout for receiving data
+        Duration(milliseconds: 5000); // 20 seconds timeout for receiving data
   }
 
   // Register a new user
@@ -29,13 +31,16 @@ class ApiService {
     try {
       final response = await _dio.post('/auth/login', data: data);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
+        print('Login successful: ${response.data}');
         return response; // Successful login
       } else {
         // Handle error response
         throw Exception('Failed to login. Status Code: ${response.statusCode}');
       }
     } catch (e) {
+      print('Error during login: $e');
+
       if (e is DioException) {
         // Check DioError and provide custom error messages
         if (e.response != null) {

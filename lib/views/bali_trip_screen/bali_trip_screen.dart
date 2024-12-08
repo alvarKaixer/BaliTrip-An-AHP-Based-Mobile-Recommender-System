@@ -54,7 +54,7 @@ class BaliTripScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "BaliTrip!",
+              "BaliTrip",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white, // Sets the font color to white

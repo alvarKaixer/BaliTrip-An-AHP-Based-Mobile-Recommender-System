@@ -75,7 +75,7 @@ class BalingasagParkPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     const Text(
-                      'Balingasag, Misamis Oriental',
+                      'Poblacion, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
@@ -97,7 +97,7 @@ class BalingasagParkPage extends StatelessWidget {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 4,
+                      itemCount: 1,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -112,7 +112,7 @@ class BalingasagParkPage extends StatelessWidget {
                               style: TextStyle(fontSize: 16),
                             ),
                             trailing: Text(
-                              '₱100.00',
+                              'Free',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,

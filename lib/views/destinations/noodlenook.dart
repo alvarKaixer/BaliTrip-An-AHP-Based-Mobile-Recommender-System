@@ -76,7 +76,7 @@ class TheThirdNoodleNookPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     const Text(
-                      'Main Street, Balingasag, Misamis Oriental',
+                      'Barangay 1, Balingasag, Misamis Oriental',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,

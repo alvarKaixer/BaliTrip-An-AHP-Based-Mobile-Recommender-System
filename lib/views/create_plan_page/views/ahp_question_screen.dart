@@ -22,7 +22,7 @@ class AHPQuestionPage extends StatefulWidget {
 }
 
 class _AHPQuestionPageState extends State<AHPQuestionPage> {
-  int _selectedImportance = 1; // Default importance level
+  int _selectedImportance = 5; // Default importance level
   int _currentPairIndex = 0; // Track which pair of criteria we are showing
 
   void _saveAndNext() {

@@ -37,25 +37,19 @@ class RecommendationPage extends StatelessWidget {
               _buildSectionTitle('Pick your recommendation:'),
               const SizedBox(height: 16),
 
-              // Display the results once the AHP API is finished calculating
-              if (recommendations.isNotEmpty) ...[
-                // Display Top Recommendation
-                _buildSectionTitle('Top Recommendation:'),
-                RecommendationList(
-                  recommendations: recommendations.take(1).toList(),
-                ),
-                const SizedBox(height: 16),
+              // Display Top Recommendation
+              _buildSectionTitle('Top Recommendation:'),
+              RecommendationList(
+                recommendations: recommendations.take(1).toList(),
+              ),
 
-                // Display More Recommendations
-                _buildSectionTitle('More Recommendations:'),
-                RecommendationList(
-                  recommendations: recommendations.skip(1).toList(),
-                ),
-              ] else ...[
-                // Placeholder text if AHP results are not available yet
-                _buildInfoText(
-                    'Calculating your recommendations...', 'Please wait'),
-              ],
+              const SizedBox(height: 16),
+
+              // Display More Recommendations
+              _buildSectionTitle('More Recommendations:'),
+              RecommendationList(
+                recommendations: recommendations.skip(1).toList(),
+              ),
 
               // Back and Next buttons at the bottom
               const SizedBox(height: 16),

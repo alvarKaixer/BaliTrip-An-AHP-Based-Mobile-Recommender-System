@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'recommendation_page.dart'; // Import the RecommendationPage
 
 class AHPQuestionsScreen extends StatefulWidget {
@@ -60,73 +59,25 @@ class _AHPQuestionsScreenState extends State<AHPQuestionsScreen> {
   // Tracks selected button indices
   final Map<int, String?> selectedCriteria = {};
 
-  void _saveAndNext() async {
-    // Collect data for the current set
-    List<Map<String, dynamic>> ahpData = [];
-    for (int i = 0; i < 3; i++) {
-      String criterion1 = criteriaSets[_currentSetIndex][i]['criterion1']!;
-      String criterion2 = criteriaSets[_currentSetIndex][i]['criterion2']!;
-      int sliderValue = _sliderValues[_currentSetIndex * 3 + i];
-
-      ahpData.add({
-        'criterion1': criterion1,
-        'criterion2': criterion2,
-        'importance': sliderValue,
+  void _saveAndNext() {
+    if (_currentSetIndex < 3) {
+      setState(() {
+        _currentSetIndex++;
+        selectedCriteria[_currentSetIndex] = null;
       });
-    }
-
-    try {
-      // Send the data to the API
-      final token =
-          await _getAuthToken(); // Replace with your method to get the token
-      final response = await Dio().post(
-        'https://balitripapi.onrender.com/ahp/rate-multiple', // Replace with your AHP API endpoint
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-          },
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => RecommendationPage(
+            recommendations: const [],
+            remainingBudget: 1000.0,
+            responses: const [],
+            recommendation: "",
+          ),
         ),
-        data: {
-          'ahp_data': ahpData,
-        },
       );
-
-      if (response.statusCode == 201) {
-        // Handle the response, proceed to next screen
-        if (_currentSetIndex < 3) {
-          setState(() {
-            _currentSetIndex++;
-            selectedCriteria[_currentSetIndex] = null;
-          });
-        } else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => RecommendationPage(
-                recommendations: const [],
-                remainingBudget: 1000.0,
-                responses: const [],
-                recommendation: "",
-              ),
-            ),
-          );
-        }
-      } else {
-        // Handle error response
-        print('Error: ${response.data}');
-        _showErrorDialog('Server Error: ${response.data}');
-      }
-    } catch (e) {
-      // Handle any errors (e.g., network issues, etc.)
-      print('Error: $e');
-      _showErrorDialog(
-          'Network Error: Please check your internet connection or try again later.');
     }
-  }
-
-  Future<String> _getAuthToken() async {
-    // Replace with your logic to retrieve the token (e.g., from shared preferences, etc.)
-    return 'your-auth-token'; // Replace this with actual token retrieval logic
   }
 
   void _goBack() {
@@ -135,26 +86,6 @@ class _AHPQuestionsScreenState extends State<AHPQuestionsScreen> {
         _currentSetIndex--;
       });
     }
-  }
-
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Error'),
-          content: Text(message),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   @override
@@ -268,6 +199,7 @@ class _AHPQuestionsScreenState extends State<AHPQuestionsScreen> {
                   const SizedBox(height: 16),
                 ],
               ),
+
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _saveAndNext,

@@ -37,7 +37,7 @@ class LoginScreenState extends State<LoginScreen> {
 
       if (response.statusCode == 201) {
         // Assuming the API response contains the token
-        final token = response.data['token']; // Adjust if necessary
+        final token = response.data['accessToken'];
 
         // Save the token using SharedPreferences
         SharedPreferences prefs = await SharedPreferences.getInstance();

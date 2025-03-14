@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "905365860402",
+    "project_id": "bali-trip-81463",
+    "storage_bucket": "bali-trip-81463.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905365860402:android:10f1a84debdcbe3fd48c2b",
+        "android_client_info": {
+          "package_name": "com.example.music_recommender"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArs3VJssEOOdthHa4wJ0h9vZsEFSTEPS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

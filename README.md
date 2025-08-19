@@ -3,7 +3,7 @@
 **BaliTrip: An AHP-Based Mobile Recommender System for Optimizing Local Tourist and Dining Options in Balingasag, Misamis Oriental**  
 
 BaliTrip is a mobile recommender system designed to help tourists optimize their travel and dining experiences.  
-It integrates a **Decision Support System (DSS)** with the **Analytic Hierarchy Process (AHP)** to recommend attractions and restaurants that best fit user preferences and budgets.  
+It integrates a **Decision Support System (DSS)** with the **Analytical Hierarchy Process (AHP)** to recommend attractions and restaurants that best fit user preferences and budgets.  
 
 ---
 
@@ -51,9 +51,9 @@ It integrates a **Decision Support System (DSS)** with the **Analytic Hierarchy 
 ---
 
 ## ✅ To-Do (Development Tasks)
-- [ ] Implement user login & profile system  
+- [ ] Implement profile system  
 - [ ] Build preference & budget input form  
-- [ ] Integrate AHP algorithm for recommendations  
+- [ ] Add more dining and tourist locations 
 - [ ] Design itinerary builder interface  
 - [ ] Admin panel for managing attractions/dining data  
 - [ ] UI/UX polish (mobile-first design)  
